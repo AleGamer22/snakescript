@@ -1,0 +1,89 @@
+/* Modern Snake Game Theme - Responsive, Clean, and Accessible */
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Arial, sans-serif;
+  background: linear-gradient(135deg, #232526 0%, #414345 100%);
+  min-height: 100vh;
+  color: #f4f4f4;
+}
+
+header {
+  text-align: center;
+  padding: 2rem 1rem 1rem 1rem;
+}
+
+h1 {
+  font-size: 2.5rem;
+  letter-spacing: 2px;
+  color: #00ff99;
+  margin-bottom: 0.5rem;
+}
+
+.snake-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  background: rgba(30, 30, 30, 0.85);
+  border-radius: 1rem;
+  margin: 0 auto 2rem auto;
+  padding: 1rem 2rem;
+  max-width: 700px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.2);
+}
+
+.snake-toolbar label {
+  font-weight: 600;
+  margin-right: 0.5rem;
+}
+
+.snake-toolbar select, .snake-toolbar button {
+  font-size: 1rem;
+  padding: 0.4rem 0.8rem;
+  border-radius: 0.5rem;
+  border: none;
+  outline: none;
+  background: #222;
+  color: #00ff99;
+  transition: background 0.2s, color 0.2s;
+}
+
+.snake-toolbar button:hover, .snake-toolbar select:focus {
+  background: #00ff99;
+  color: #222;
+}
+
+#game-area {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  background: #181818;
+  border-radius: 1rem;
+  box-shadow: 0 4px 32px rgba(0,0,0,0.3);
+  width: 90vw;
+  max-width: 600px;
+  height: 60vw;
+  max-height: 600px;
+  outline: none;
+  position: relative;
+}
+
+@media (max-width: 700px) {
+  .snake-toolbar {
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 1rem;
+  }
+  #game-area {
+    width: 98vw;
+    height: 70vw;
+    max-width: 98vw;
+    max-height: 70vw;
+  }
+}
+
+/* Add more styles for snake, food, score, etc. as needed */

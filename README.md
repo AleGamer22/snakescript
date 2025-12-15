@@ -1,23 +1,27 @@
-# JavaScript Snake Game
 
-This is a DOM-based game of Snake that I wrote in JavaScript over a decade ago. It was made to have sort of a nostalgic feel to it.
+# Snake Moderno (2025)
 
- 
- 
- 
-On first load sometimes the game frame will not load correctly and you'll need to press the refresh icon above its display panel to get the game to show. 
+> ¡Juega al clásico Snake con un diseño moderno, responsivo y accesible!
 
- 
- 
+## Características
+- Interfaz moderna y responsiva (CSS Grid/Flexbox, dark mode, mobile friendly)
+- Accesibilidad mejorada (etiquetas ARIA, navegación por teclado, enfoque automático)
+- Soporte para controles táctiles en móviles
+- Animaciones suaves para la serpiente y la comida
+- Selección de temas y dificultad
+- Código modular y fácil de mantener (ES6+)
 
-## How to use
-The index.html file should give an idea of how to use this code. However, below you can see how to initialize it into any div within a webpage.
+## Cómo jugar
+1. Abre `Snake.html` en tu navegador.
+2. Usa las flechas del teclado (o desliza en móvil) para mover la serpiente.
+3. Cambia el tema o la dificultad desde la barra superior.
+4. ¡Disfruta y trata de superar tu puntuación!
 
-    var mySnakeBoard = new SNAKE.Board( {
-                                            boardContainer: "game-area",
-                                            fullScreen: false,
-                                            width: 580,
-                                            height:400
-                                        });
-                                    
-The comments within the source code are formatted a little strange because at the time I was playing around with YUI Doc which generates documentation from code. Kind of sucks that there's so much churn in the JavaScript world. However, I'm glad the rest of the code doesn't use any external libraries, as this game still works the same after over a decade.
+## Estructura del proyecto
+- `Snake.html`: Página principal del juego.
+- `css/modern-snake.css`: Estilos modernos y responsivos.
+- `js/snake.js`: Lógica del juego (moderna, accesible, móvil).
+- `js/init.js`: Inicialización y mejoras de accesibilidad.
+
+## Créditos
+Basado en el clásico de Patrick Gillespie, rediseñado y modernizado por AlejandroMA22 y mejoras automáticas de GitHub Copilot.

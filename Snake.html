@@ -1,141 +1,73 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
-<!--
-
-JavaScript Snake
-By Patrick Gillespie
-http://patorjk.com/games/snake
-
-Source code is available here: https://github.com/patorjk/JavaScript-Snake
-
--->
-    <meta charset="utf-8">
-    <title>Snake By AlejandroMA22</title>
-    <link rel=stylesheet id="style" type="text/css" href="./css/main-snake.css" />
-    <link rel="shortcut icon" href="css/images/favicon.png" />
-    <style>
-      .snake-toolbar {
-        position: absolute;
-        top: 0;
-        left: 0;
-        z-index:10000;
-        padding: 5px;
-      }
-    </style>
-<script>
-
-function getTheme () {
-    function changeTheme(themeUrl) {
-      var elm = document.getElementById("style");
-      elm && elm.remove();
-
-      var newCss = document.createElement("link");
-      newCss.id = "style";
-      newCss.rel = "stylesheet";
-      newCss.type = "text/css";
-      newCss.href = themeUrl;
-      document.head.appendChild(newCss);
-    }
-    var index = document.getElementById("select").selectedIndex;
-    switch (index) {
-        case 0: 
-          changeTheme('css/light-snake.css?' + Math.random());
-          break;
-        case 1: 
-          changeTheme('css/main-snake.css?' + Math.random());
-          break;
-        case 2: 
-          changeTheme('css/dark-snake.css?' + Math.random());
-          break;
-        case 3: 
-          changeTheme('css/green-snake.css?' + Math.random());
-          break;
-        case 4: 
-          changeTheme('css/matrix-snake.css?' + Math.random());
-          break;
-        case 5: 
-          changeTheme('css/Senura-snake.css?' + Math.random());
-          break;
-        default:
-          changeTheme('css/main-snake.css?' + Math.random());
-          break;
-    }
-    setTimeout(function() {
-        document.getElementById('game-area').focus();
-    }, 10);
-}
-
-if (navigator.onLine && window.location.hostname === 'patorjk.com') {
-    var _gaq = _gaq || [];
-    _gaq.push(['_setAccount', 'UA-3312460-1']);
-    _gaq.push(['_trackPageview']);
-
-    (function() {
-      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-    })();
-}
-</script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Snake Moderno - AlejandroMA22</title>
+  <link rel="stylesheet" id="style" href="./css/modern-snake.css">
+  <link rel="shortcut icon" href="css/images/favicon.png" />
 </head>
 <body>
-    <div class="snake-toolbar">
-      <div style="display:inline-block;margin-right:10px;">
-        <span>Theme:</span>
-        <select onchange="getTheme()" id="select">
-            <option>Light Theme by yokesharun</option>
-            <option selected>Main Theme by patorjk</option>
-            <option>Dark Theme by KenyStev</option>
-            <option>Green Theme by CoffeeCatDE</option>
-            <option>Matrix Theme by Geahad Haymor</option>
-              <option>Theme by Senura Ratnayake</option>
-        </select>
-      </div>
-      <div style="display:inline-block;margin-right:10px;">
-        <span>Mode:</span>
-        <select id="selectMode">
-            <option value="100">Easy</option>
-            <option value="75" selected>Medium</option>
-            <option value="50">Hard</option>
-        </select>
-      </div>
-      <button onclick="go_full_screen()">Full Screen</button><br />
-    </div>
+  <header>
+    <h1>Snake Moderno</h1>
+    <p>¡Juega al clásico Snake con un diseño moderno y responsivo!</p>
+  </header>
+  <nav class="snake-toolbar" aria-label="Controles del juego">
+    <label for="theme-select">Tema:</label>
+    <select id="theme-select" aria-label="Seleccionar tema">
+      <option value="modern-snake.css" selected>Moderno</option>
+      <option value="light-snake.css">Claro</option>
+      <option value="main-snake.css">Clásico</option>
+      <option value="dark-snake.css">Oscuro</option>
+      <option value="green-snake.css">Verde</option>
+      <option value="matrix-snake.css">Matrix</option>
+      <option value="Senura-snake.css">Senura</option>
+    </select>
+    <label for="mode-select">Modo:</label>
+    <select id="mode-select" aria-label="Seleccionar dificultad">
+      <option value="100">Fácil</option>
+      <option value="75" selected>Medio</option>
+      <option value="50">Difícil</option>
+    </select>
+    <button id="fullscreen-btn" aria-label="Pantalla completa">Pantalla completa</button>
+  </nav>
+  <main>
+    <section id="mode-wrapper" style="display:none;"></section>
+    <section id="game-area" tabindex="0" aria-label="Área de juego" role="region"></section>
+  </main>
+  <script>
+    // Cambiar tema dinámicamente
+    document.getElementById('theme-select').addEventListener('change', function(e) {
+      const theme = e.target.value;
+      const style = document.getElementById('style');
+      style.href = './css/' + theme + '?' + Math.random();
+      setTimeout(() => document.getElementById('game-area').focus(), 10);
+    });
 
-    <!--
-      <h2>Select which mode you would like to play in.</h2>
-      <button id="Easy">Easy</button><br />
-      <button id="Medium">Medium</button><br />
-      <button id="Difficult">Difficult</button>
-
-<button id="high-score">Get your current high score for this game.</button>
--->
-    <div id="mode-wrapper" style="display: inline; width: auto;">
-    </div>
-
-    <div id="game-area" tabindex="0">
-    </div>
-    <script type="text/javascript" src="./js/snake.js"></script>
-    <script type="text/javascript" src="./js/init.js"></script>
-    <script type="text/javascript">
-      function go_full_screen() {
-        var elem = document.documentElement;
-        try {
-            if (elem.requestFullscreen) {
-              elem.requestFullscreen();
-            } else if (elem.msRequestFullscreen) {
-              elem.msRequestFullscreen();
-            } else if (elem.mozRequestFullScreen) {
-              elem.mozRequestFullScreen();
-            } else if (elem.webkitRequestFullscreen) {
-              elem.webkitRequestFullscreen();
-            }
-        } catch(err) {
-          console.error(err);
-          alert("Sorry, fullscreen won't work in this setup.");
+    // Pantalla completa
+    document.getElementById('fullscreen-btn').addEventListener('click', function() {
+      const elem = document.documentElement;
+      try {
+        if (elem.requestFullscreen) {
+          elem.requestFullscreen();
+        } else if (elem.msRequestFullscreen) {
+          elem.msRequestFullscreen();
+        } else if (elem.mozRequestFullScreen) {
+          elem.mozRequestFullScreen();
+        } else if (elem.webkitRequestFullscreen) {
+          elem.webkitRequestFullscreen();
         }
+      } catch (err) {
+        alert('No se pudo activar pantalla completa.');
       }
+    });
+
+    // Accesibilidad: enfocar área de juego al cargar
+    window.addEventListener('DOMContentLoaded', () => {
+      document.getElementById('game-area').focus();
+    });
   </script>
+  <script src="./js/snake.js"></script>
+  <script src="./js/init.js"></script>
 </body>
 </html>
