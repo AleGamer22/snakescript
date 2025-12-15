@@ -1,7 +1,7 @@
 {
   "name": "Snake By AleGamer2.0",
   "version": "1.0.0",
-  "description": "JavaScript Snake<br/> By Patrick Gillespie<br/> License: MIT<br/> http://patorjk.com/games/snake",
+  "description": "JavaScript Snake<br/> By ANV<br/> License: MIT<br/> http://patorjk.com/games/snake",
   "main": "index.html",
   "scripts": {
     "start": "parcel index.html --open",
@@ -15,9 +15,9 @@
   "author": "",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/patorjk/JavaScript-Snake/issues"
+    "url": "https://github.com/AleGamer22/snakescript/issues"
   },
-  "homepage": "https://github.com/patorjk/JavaScript-Snake#readme",
+  "homepage": "https://github.com/AleGamer22/snakescript#readme",
   "dependencies": {},
   "devDependencies": {
     "parcel-bundler": "^1.6.1"
