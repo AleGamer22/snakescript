@@ -11,3 +11,9 @@ header h1 { color:#58f0b6 }
 .obstacle { background: linear-gradient(180deg,#2a2a2a,#1f1f1f); border-radius:6px }
 .modal { background:#0f0f10; color:#e9fef0 }
 .mobile-controls .mv { background: rgba(88,240,182,0.12); color:#baf6da }
+
+/* Base safety styles */
+.cell { box-sizing: border-box; transition: background 120ms, transform 120ms }
+.hud { display:flex; justify-content:space-between; max-width:700px }
+.modal input { padding:0.4rem; border-radius:4px; border:none; background:#111; color:#fff }
+.highscores-list li { padding:0.12rem 0 }

@@ -1,11 +1,31 @@
 GitHub Pages deployment notes:
-- After pushing to `main`, the workflow will create/update the `gh-pages` branch. You can check Actions tab to follow the deployment.
-- If Pages doesn't appear automatically, go to GitHub → Settings → Pages and ensure `gh-pages` is selected as the source.
 
 # Snake Moderno (2025)
 
 > ¡Juega al clásico Snake con un diseño moderno, responsivo y accesible!
 
+Global leaderboard (optional)
+--------------------------------
+This project supports an optional global leaderboard using Firebase Firestore. To enable:
+
+1. Create a Firebase project at https://console.firebase.google.com and add a Web App.
+2. Enable Firestore (in test mode while developing).
+3. Copy your Firebase config and create `js/global-config.js` with:
+
+```js
+window.GLOBAL_LEADERBOARD_CONFIG = {
+	apiKey: "...",
+	authDomain: "...",
+	projectId: "...",
+	storageBucket: "...",
+	messagingSenderId: "...",
+	appId: "..."
+};
+```
+
+4. The game will detect the config and show a "Enviar puntuación global" button in the game over modal. Use the "Cargar leaderboard global" button to fetch top scores.
+
+Note: Firestore rules in production should be configured to prevent abuse; for testing you can use open rules but secure the DB before going public.
 ## Características
 - Interfaz moderna y responsiva (CSS Grid/Flexbox, dark mode, mobile friendly)
 - Accesibilidad mejorada (etiquetas ARIA, navegación por teclado, enfoque automático)

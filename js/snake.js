@@ -312,4 +312,80 @@ window.addEventListener('DOMContentLoaded', () => {
   const modeSelect = document.getElementById('mode-select');
   const game = new SnakeGame(gameArea, Number(modeSelect.value));
   modeSelect.addEventListener('change', e => game.updateSpeed(Number(e.target.value)));
+  // Global leaderboard integration (Firebase) - optional
+  (async function attachGlobalLeaderboard() {
+    const fetchBtn = document.getElementById('fetch-global');
+    const submitBtn = document.getElementById('submit-global');
+    const globalList = document.getElementById('global-highscores-list');
+    const status = document.getElementById('global-status');
+    if (!fetchBtn || !globalList) return;
+
+    // Helper: render list
+    function renderGlobal(items) {
+      globalList.innerHTML = '';
+      (items || []).forEach(it => {
+        const li = document.createElement('li');
+        li.textContent = `${it.name} — ${it.score}`;
+        globalList.appendChild(li);
+      });
+    }
+
+    // If user provided a Firebase config in `window.GLOBAL_LEADERBOARD_CONFIG`, initialize SDK
+    async function loadScript(src) {
+      return new Promise((res, rej) => {
+        const s = document.createElement('script');
+        s.src = src;
+        s.onload = () => res();
+        s.onerror = () => rej(new Error('Failed to load ' + src));
+        document.head.appendChild(s);
+      });
+    }
+
+    async function initFirebaseIfNeeded() {
+      if (!window.GLOBAL_LEADERBOARD_CONFIG) return false;
+      if (window.__globalLeaderboardInit) return true;
+      try {
+        await loadScript('https://www.gstatic.com/firebasejs/9.22.1/firebase-app-compat.js');
+        await loadScript('https://www.gstatic.com/firebasejs/9.22.1/firebase-firestore-compat.js');
+        const cfg = window.GLOBAL_LEADERBOARD_CONFIG;
+        window.__firebaseApp = firebase.initializeApp(cfg);
+        window.__firestore = firebase.firestore();
+        window.__globalLeaderboardInit = true;
+        return true;
+      } catch (e) {
+        console.warn('Firebase init failed', e);
+        return false;
+      }
+    }
+
+    async function fetchGlobal() {
+      status.textContent = 'Cargando...';
+      if (!await initFirebaseIfNeeded()) { status.textContent = 'Global leaderboard no configurado.'; return; }
+      try {
+        const col = await window.__firestore.collection('snake_scores').orderBy('score','desc').limit(10).get();
+        const items = [];
+        col.forEach(doc => items.push(doc.data()));
+        renderGlobal(items);
+        status.textContent = 'Últimos cargados.';
+      } catch (e) { status.textContent = 'Error cargando leaderboard.'; console.error(e); }
+    }
+
+    async function submitGlobal() {
+      status.textContent = 'Enviando...';
+      if (!await initFirebaseIfNeeded()) { status.textContent = 'Global leaderboard no configurado.'; return; }
+      try {
+        const name = (document.getElementById('player-name').value || 'Anónimo').substring(0,12);
+        const score = game.score || 0;
+        await window.__firestore.collection('snake_scores').add({ name, score, date: new Date() });
+        status.textContent = 'Puntuación enviada. Actualizando...';
+        await fetchGlobal();
+      } catch (e) { status.textContent = 'Error al enviar puntuación.'; console.error(e); }
+    }
+
+    fetchBtn.addEventListener('click', fetchGlobal);
+    submitBtn.addEventListener('click', submitGlobal);
+
+    // If config is present, show submit button
+    if (window.GLOBAL_LEADERBOARD_CONFIG) submitBtn.style.display = 'inline-block';
+  })();
 });
