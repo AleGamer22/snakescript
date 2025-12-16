@@ -1,3 +1,6 @@
+GitHub Pages deployment notes:
+- After pushing to `main`, the workflow will create/update the `gh-pages` branch. You can check Actions tab to follow the deployment.
+- If Pages doesn't appear automatically, go to GitHub → Settings → Pages and ensure `gh-pages` is selected as the source.
 
 # Snake Moderno (2025)
 
