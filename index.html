@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Snake Moderno - AlejandroMA22</title>
+  <link rel="stylesheet" id="style" href="./css/modern-snake.css">
+  <link rel="shortcut icon" href="css/images/favicon.png" />
+</head>
+<body>
+  <header>
+    <h1>Snake Moderno</h1>
+    <p>¡Juega al clásico Snake con un diseño moderno y responsivo!</p>
+  </header>
+  <nav class="snake-toolbar" aria-label="Controles del juego">
+    <label for="theme-select">Tema:</label>
+    <select id="theme-select" aria-label="Seleccionar tema">
+      <option value="modern-snake.css" selected>Moderno</option>
+      <option value="light-snake.css">Claro</option>
+      <option value="main-snake.css">Clásico</option>
+      <option value="dark-snake.css">Oscuro</option>
+      <option value="green-snake.css">Verde</option>
+      <option value="matrix-snake.css">Matrix</option>
+      <option value="Senura-snake.css">Senura</option>
+    </select>
+    <label for="mode-select">Modo:</label>
+    <select id="mode-select" aria-label="Seleccionar dificultad">
+      <option value="100">Fácil</option>
+      <option value="75" selected>Medio</option>
+      <option value="50">Difícil</option>
+    </select>
+    <button id="fullscreen-btn" aria-label="Pantalla completa">Pantalla completa</button>
+  </nav>
+  <main>
+    <section id="mode-wrapper" style="display:none;"></section>
+    <section class="hud" aria-hidden="false">
+      <div class="scoreboard">
+        <div class="score">Puntos: <span id="score">0</span></div>
+        <div class="highscore">Mejor: <span id="highscore">0</span></div>
+        <div class="level">Nivel: <span id="level">1</span></div>
+      </div>
+      <div class="controls">
+        <button id="pause-btn" aria-label="Pausar">Pausar</button>
+        <button id="restart-btn" aria-label="Reiniciar">Reiniciar</button>
+        <button id="mute-btn" aria-label="Silenciar">🔊</button>
+        <button id="scores-btn" aria-label="Ver puntuaciones">Puntuaciones</button>
+      </div>
+    </section>
+    <section id="game-area" tabindex="0" aria-label="Área de juego" role="region"></section>
+  </main>
+
+  <!-- Overlay / Modals -->
+  <div id="overlay" class="overlay" aria-hidden="true">
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+      <h2 id="modal-title">Juego terminado</h2>
+      <p id="modal-message">Puntuación: <strong id="modal-score">0</strong></p>
+      <div id="save-score" class="save-score">
+        <label for="player-name">Tu nombre:</label>
+        <input id="player-name" maxlength="12" placeholder="Anónimo" />
+        <button id="save-score-btn">Guardar</button>
+      </div>
+      <div class="modal-actions">
+        <button id="modal-restart">Jugar de nuevo</button>
+        <button id="modal-close">Cerrar</button>
+      </div>
+      <h3>Puntuaciones</h3>
+      <ol id="highscores-list" class="highscores-list"></ol>
+    </div>
+  </div>
+
+  <!-- Mobile controls -->
+  <div id="mobile-controls" class="mobile-controls" aria-hidden="true">
+    <button data-dir="up" class="mv">▲</button>
+    <div>
+      <button data-dir="left" class="mv">◀</button>
+      <button data-dir="down" class="mv">▼</button>
+      <button data-dir="right" class="mv">▶</button>
+    </div>
+  </div>
+
+  <script>
+    // Cambiar tema dinámicamente
+    document.getElementById('theme-select').addEventListener('change', function(e) {
+      const theme = e.target.value;
+      const style = document.getElementById('style');
+      style.href = './css/' + theme + '?' + Math.random();
+      setTimeout(() => document.getElementById('game-area').focus(), 10);
+    });
+
+    // Pantalla completa
+    document.getElementById('fullscreen-btn').addEventListener('click', function() {
+      const elem = document.documentElement;
+      try {
+        if (elem.requestFullscreen) {
+          elem.requestFullscreen();
+        } else if (elem.msRequestFullscreen) {
+          elem.msRequestFullscreen();
+        } else if (elem.mozRequestFullScreen) {
+          elem.mozRequestFullScreen();
+        } else if (elem.webkitRequestFullscreen) {
+          elem.webkitRequestFullscreen();
+        }
+      } catch (err) {
+        alert('No se pudo activar pantalla completa.');
+      }
+    });
+
+    // Accesibilidad: enfocar área de juego al cargar
+    window.addEventListener('DOMContentLoaded', () => {
+      document.getElementById('game-area').focus();
+    });
+  </script>
+  <script src="./js/snake.js"></script>
+  <script src="./js/init.js"></script>
+</body>
+</html>
