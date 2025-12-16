@@ -1,0 +1,32 @@
+/* Light Theme for Snake - High contrast and soft accents */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Arial, sans-serif;
+  background: linear-gradient(180deg, #f6fafb 0%, #e8f0f2 100%);
+  color: #102027;
+}
+header { text-align:center; padding:1.5rem 1rem; }
+h1 { color:#0b8457; margin:0 0 0.2rem 0 }
+.snake-toolbar {
+  background: rgba(255,255,255,0.9);
+  color:#0b3b2e;
+  box-shadow: 0 6px 20px rgba(16,32,39,0.06);
+}
+.snake-toolbar select, .snake-toolbar button { background:#f0f6f5; color:#0b3b2e }
+#game-area {
+  background: linear-gradient(180deg,#ffffff,#f7fcfb);
+  border: 2px solid rgba(11,132,87,0.08);
+  width: 90vw; max-width:600px; height:60vw; max-height:600px;
+  border-radius:12px;
+}
+.cell { background: transparent; transition: background 120ms, transform 120ms }
+.snake-head { background: linear-gradient(180deg,#89e6c4,#0b8457); border-radius:6px }
+.snake-body { background: linear-gradient(180deg,#bff0df,#42b98a); border-radius:4px }
+.food { background: radial-gradient(circle at 30% 30%, #ffdce0,#ff667a); border-radius:50% }
+.food.special { background: radial-gradient(circle at 30% 30%, #fff2b3,#ffb84d) }
+.obstacle { background:#c8c7c7; border-radius:4px }
+/* Modal & HUD adjustments */
+.overlay { background: rgba(10,10,10,0.45) }
+.modal { background: #ffffff; color:#102027 }
+.mobile-controls .mv { background: rgba(11,132,87,0.9) }

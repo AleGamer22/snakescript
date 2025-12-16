@@ -1,0 +1,13 @@
+/* Verde - naturaleza vibrante */
+body { margin:0; padding:0; font-family: 'Segoe UI', Arial, sans-serif; background: linear-gradient(180deg,#eafaf0,#dff7ea); color:#0b3b2e }
+header h1 { color:#0b7a44 }
+.snake-toolbar { background: rgba(10,45,20,0.9); color:#dff7ea }
+#game-area { background: linear-gradient(180deg,#dff7ea,#c8f1d9); border-radius:12px }
+.cell { background: transparent }
+.snake-head { background: linear-gradient(180deg,#a8ffcf,#00ff99); border-radius:8px }
+.snake-body { background: linear-gradient(180deg,#74d891,#2fa25b) }
+.food { background: radial-gradient(circle at 30% 30%, #ffe6f0,#ff6699) }
+.food.special { background: radial-gradient(circle at 30% 30%, #fff6b2,#ffcc33) }
+.obstacle { background: #9bbfa1 }
+.modal { background:#f5fff8; color:#05321a }
+.mobile-controls .mv { background: rgba(11,122,68,0.9); color:#fff }

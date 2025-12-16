@@ -1,0 +1,13 @@
+/* Senura - elegante púrpura y neón */
+body { margin:0; padding:0; font-family: 'Segoe UI', Arial, sans-serif; background: linear-gradient(135deg,#0b0710,#201128); color:#f6eaff }
+header h1 { color:#ff8de6 }
+.snake-toolbar { background: rgba(20,10,20,0.9); color:#f6eaff }
+#game-area { background: linear-gradient(180deg,#12071a,#1b0b25); border-radius:12px }
+.cell { background: transparent }
+.snake-head { background: radial-gradient(circle at 30% 30%, #ffd1ff,#ff8de6); border-radius:8px }
+.snake-body { background: linear-gradient(180deg,#c266ff,#7b2bff) }
+.food { background: radial-gradient(circle at 30% 30%, #ffdfd6,#ff7a66) }
+.food.special { background: radial-gradient(circle at 30% 30%, #fff7b8,#ffd24d) }
+.obstacle { background:#3a2338 }
+.modal { background:#15061a; color:#f0e6ff }
+.mobile-controls .mv { background: rgba(255,141,230,0.16); color:#fff }

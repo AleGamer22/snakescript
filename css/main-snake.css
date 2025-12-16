@@ -1,0 +1,15 @@
+/* Clásico - estilo retro minimalista */
+body {
+  margin:0; padding:0; font-family: 'Courier New', monospace; background:#000; color:#bfffaa;
+}
+header h1 { color:#7fff7f }
+.snake-toolbar { background:rgba(0,0,0,0.75); color:#bfffaa }
+#game-area { background:#000; border: 3px solid #0b3b2e; box-shadow: 0 0 30px rgba(0,128,0,0.05); }
+.cell { background: transparent; }
+.snake-head { background:#bfffaa; box-shadow: 0 0 8px rgba(191,255,170,0.12) }
+.snake-body { background:#7fdd7f }
+.food { background:#ff7f7f; border-radius:2px }
+.food.special { background:#ffd27f }
+.obstacle { background:#4b4b4b }
+.modal { background:#081008; color:#cfeecf }
+.mobile-controls .mv { background: rgba(127,223,127,0.12); color:#bfffaa }

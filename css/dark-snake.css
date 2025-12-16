@@ -1,0 +1,13 @@
+/* Dark Theme - Sleek and muted */
+body { margin:0; padding:0; font-family: 'Segoe UI', Arial, sans-serif; background: linear-gradient(180deg,#0b0b0c,#121214); color:#e6eef0 }
+header h1 { color:#58f0b6 }
+.snake-toolbar { background: rgba(18,18,20,0.85); color:#cfeee0 }
+#game-area { background: linear-gradient(180deg,#0f1312,#0b0b0c); border-radius:12px }
+.cell { background: transparent }
+.snake-head { background: radial-gradient(circle at 30% 30%, #a6ffd9,#58f0b6); border-radius:6px }
+.snake-body { background: linear-gradient(180deg,#1fbf7f,#0b7a4f) }
+.food { background: radial-gradient(circle at 30% 30%, #ffd1e0,#ff3366) }
+.food.special { background: radial-gradient(circle at 30% 30%, #fff6b2,#ffcc33) }
+.obstacle { background: linear-gradient(180deg,#2a2a2a,#1f1f1f); border-radius:6px }
+.modal { background:#0f0f10; color:#e9fef0 }
+.mobile-controls .mv { background: rgba(88,240,182,0.12); color:#baf6da }

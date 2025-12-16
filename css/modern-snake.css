@@ -1,0 +1,127 @@
+/* Modern Snake Game Theme - Responsive, Clean, and Accessible */
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Arial, sans-serif;
+  background: linear-gradient(135deg, #232526 0%, #414345 100%);
+  min-height: 100vh;
+  color: #f4f4f4;
+}
+
+header {
+  text-align: center;
+  padding: 2rem 1rem 1rem 1rem;
+}
+
+h1 {
+  font-size: 2.5rem;
+  letter-spacing: 2px;
+  color: #00ff99;
+  margin-bottom: 0.5rem;
+}
+
+.snake-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  background: rgba(30, 30, 30, 0.85);
+  border-radius: 1rem;
+  margin: 0 auto 2rem auto;
+  padding: 1rem 2rem;
+  max-width: 700px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.2);
+}
+
+.snake-toolbar label {
+  font-weight: 600;
+  margin-right: 0.5rem;
+}
+
+.snake-toolbar select, .snake-toolbar button {
+  font-size: 1rem;
+  padding: 0.4rem 0.8rem;
+  border-radius: 0.5rem;
+  border: none;
+  outline: none;
+  background: #222;
+  color: #00ff99;
+  transition: background 0.2s, color 0.2s;
+}
+
+.snake-toolbar button:hover, .snake-toolbar select:focus {
+  background: #00ff99;
+  color: #222;
+}
+
+#game-area {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  background: #181818;
+  border-radius: 1rem;
+  box-shadow: 0 4px 32px rgba(0,0,0,0.3);
+  width: 90vw;
+  max-width: 600px;
+  height: 60vw;
+  max-height: 600px;
+  outline: none;
+  position: relative;
+}
+
+.hud {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 700px;
+  margin: 0 auto 1rem auto;
+  gap: 1rem;
+}
+.scoreboard { display:flex; gap:1rem; align-items:center; }
+.scoreboard > div { background: rgba(0,0,0,0.45); padding:0.5rem 0.8rem; border-radius:0.5rem; color:#e6fff0; font-weight:600 }
+.controls button { margin-left:0.5rem }
+.controls button, .hud .controls button { background:#222; color:#00ff99; border-radius:0.5rem; padding:0.4rem 0.8rem; border:none }
+
+/* Grid cells appearance */
+.cell { background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.05)); transition: background 120ms, transform 120ms; }
+.snake-head { background: radial-gradient(circle at 30% 30%, #a8ffcf, #00ff99); box-shadow: 0 2px 8px rgba(0,255,153,0.15); transform: scale(1.02); border-radius: 35%; }
+.snake-body { background: linear-gradient(180deg,#00cc66,#008a44); border-radius: 30%; box-shadow: inset 0 -6px 12px rgba(0,0,0,0.15); }
+.food { background: radial-gradient(circle at 30% 30%, #ffd1e0, #ff3366); border-radius: 50%; box-shadow: 0 0 12px rgba(255,51,102,0.2); }
+.food.special { background: radial-gradient(circle at 30% 30%, #fff6b2, #ffcc33); box-shadow: 0 0 12px rgba(255,204,51,0.25); }
+.obstacle { background: repeating-linear-gradient(45deg, #333, #333 6px, #2a2a2a 6px, #2a2a2a 12px); border-radius:6px; }
+
+/* Overlay / Modal */
+.overlay { position: fixed; inset: 0; display: grid; place-items: center; background: rgba(0,0,0,0.6); opacity:0; pointer-events:none; transition:opacity 220ms; }
+.overlay[aria-hidden="false"] { opacity:1; pointer-events:auto }
+.modal { background: #0f0f10; color: #e9fef0; padding:1.2rem; border-radius:0.8rem; max-width: 420px; width: calc(100% - 2rem); box-shadow: 0 8px 40px rgba(0,0,0,0.6); }
+.modal h2 { color:#00ff99; margin-top:0 }
+.modal .modal-actions { display:flex; gap:0.5rem; margin-top:0.6rem }
+.modal input { padding:0.4rem 0.6rem; border-radius:0.4rem; border:none; background:#111; color:#fff }
+
+/* Mobile controls */
+.mobile-controls { position: fixed; right: 10px; bottom: 16px; display:none; gap:8px; align-items:center }
+.mobile-controls .mv { font-size:1.2rem; padding:0.6rem 0.8rem; border-radius:8px; background: rgba(10,10,10,0.7); color:#fff; border:none }
+
+@media (max-width:700px) {
+  .mobile-controls { display:flex }
+  #game-area { width: 98vw; height: 70vw }
+}
+
+@media (max-width: 700px) {
+  .snake-toolbar {
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 1rem;
+  }
+  #game-area {
+    width: 98vw;
+    height: 70vw;
+    max-width: 98vw;
+    max-height: 70vw;
+  }
+}
+
+/* Add more styles for snake, food, score, etc. as needed */
