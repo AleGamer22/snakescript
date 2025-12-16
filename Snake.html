@@ -33,8 +33,50 @@
   </nav>
   <main>
     <section id="mode-wrapper" style="display:none;"></section>
+    <section class="hud" aria-hidden="false">
+      <div class="scoreboard">
+        <div class="score">Puntos: <span id="score">0</span></div>
+        <div class="highscore">Mejor: <span id="highscore">0</span></div>
+        <div class="level">Nivel: <span id="level">1</span></div>
+      </div>
+      <div class="controls">
+        <button id="pause-btn" aria-label="Pausar">Pausar</button>
+        <button id="restart-btn" aria-label="Reiniciar">Reiniciar</button>
+        <button id="mute-btn" aria-label="Silenciar">🔊</button>
+        <button id="scores-btn" aria-label="Ver puntuaciones">Puntuaciones</button>
+      </div>
+    </section>
     <section id="game-area" tabindex="0" aria-label="Área de juego" role="region"></section>
   </main>
+
+  <!-- Overlay / Modals -->
+  <div id="overlay" class="overlay" aria-hidden="true">
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+      <h2 id="modal-title">Juego terminado</h2>
+      <p id="modal-message">Puntuación: <strong id="modal-score">0</strong></p>
+      <div id="save-score" class="save-score">
+        <label for="player-name">Tu nombre:</label>
+        <input id="player-name" maxlength="12" placeholder="Anónimo" />
+        <button id="save-score-btn">Guardar</button>
+      </div>
+      <div class="modal-actions">
+        <button id="modal-restart">Jugar de nuevo</button>
+        <button id="modal-close">Cerrar</button>
+      </div>
+      <h3>Puntuaciones</h3>
+      <ol id="highscores-list" class="highscores-list"></ol>
+    </div>
+  </div>
+
+  <!-- Mobile controls -->
+  <div id="mobile-controls" class="mobile-controls" aria-hidden="true">
+    <button data-dir="up" class="mv">▲</button>
+    <div>
+      <button data-dir="left" class="mv">◀</button>
+      <button data-dir="down" class="mv">▼</button>
+      <button data-dir="right" class="mv">▶</button>
+    </div>
+  </div>
   <script>
     // Cambiar tema dinámicamente
     document.getElementById('theme-select').addEventListener('change', function(e) {
